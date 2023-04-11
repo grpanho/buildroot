@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>System Information</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>System Information</h1>
+        <p>System time: {{ system_time }}</p>
+        <p>Server uptime: {{ server_uptime }}</p>
+        <p>CPU model: {{ cpu_model }}</p>
+        <p>CPU speed: {{ cpu_speed }} MHz</p>
+        <p>CPU load: {{ cpu_load }}</p>
+        <p>Memory usage: {{ mem_used }} / {{ mem_total }}</p>
+        <p>Memory free: {{ mem_free }}</p>
+        <p>Memory shared: {{ mem_shared }}</p>
+        <p>Memory cached: {{ mem_cached }}</p>
+        <p>System version: {{ system_version }}</p>
+        <h2>List of Processes</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>PID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pid, name in processes %}
+                    <tr>
+                        <td>{{ pid }}</td>
+                        <td>{{ name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
