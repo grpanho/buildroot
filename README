@@ -1,26 +1,23 @@
-Buildroot is a simple, efficient and easy-to-use tool to generate embedded
-Linux systems through cross-compilation.
+# Operating Systems Laboratory (CC)
+## Practical Work 1
 
-The documentation can be found in docs/manual. You can generate a text
-document with 'make manual-text' and read output/docs/manual/manual.text.
-Online documentation can be found at http://buildroot.org/docs.html
+### Guide
+1. Objectives
+    1. Expand knowledge about the construction and support of Linux distributions.
+    2. Implementation and installation of a Web server.
+    3. Learning about the content of the /proc directory.
 
-To build and use the buildroot stuff, do the following:
+2. Description
+    The implementation of this work consists of generating a Linux distribution that has a WEB server written in Python or C/C++. To do so, it will be necessary to add a Python interpreter in the generated distribution (if Python is used), implement a WEB server, and write a simple HTML page.
 
-1) run 'make menuconfig'
-2) select the target architecture and the packages you wish to compile
-3) run 'make'
-4) wait while it compiles
-5) find the kernel, bootloader, root filesystem, etc. in output/images
+    Support for the Python language can be added through the menuconfig of Buildroot (Interpreter languages and scripting submenu). However, Python requires a toolchain that supports WCHAR (a type of variable used for UTF-16 string encoding). This support can also be added through menuconfig. It will be necessary to recompile the entire distribution (make clean, followed by make). If C/C++ is used, the cross-compiler created by Buildroot itself can be used to compile the application.
 
-You do not need to be root to build or run buildroot.  Have fun!
-
-Buildroot comes with a basic configuration for a number of boards. Run
-'make list-defconfigs' to view the list of provided configurations.
-
-Please feed suggestions, bug reports, insults, and bribes back to the
-buildroot mailing list: buildroot@buildroot.org
-You can also find us on #buildroot on OFTC IRC.
-
-If you would like to contribute patches, please read
-https://buildroot.org/manual.html#submitting-patches
+    The objective of the HTML page is to provide basic information about the system's operation (target). Below is the list of information that should be presented on the page dynamically:
+    
+    * System date and time;
+    * Uptime (time of operation without system restart) in seconds;
+    * Processor model and speed;
+    * Occupied capacity of the processor (%);
+    * Total and used RAM memory (MB);
+    * System version;
+    * List of running processes (pid and name).
